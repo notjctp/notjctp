@@ -95,46 +95,42 @@
       <h2 class="text-2xl font-bold text-blue-700 mb-4">Location</h2>
       <ul class="list-disc list-inside text-lg mb-8 text-gray-800">
         <li>Brgy. Tingib, Pastrana, Leyte</li>
+         <!-- Button to trigger map -->
+        <button id="openMapButton" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Show Location</button>
       </ul>
-      <!-- Button to trigger the modal -->
-      <button class="px-4 py-2 bg-blue-700 text-white rounded hover:bg-blue-600" id="openMapButton">Show Location</button>
-
       <!-- Modal -->
       <div id="mapModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
-        <div class="bg-white p-4 rounded-lg shadow-lg w-3/4 h-3/4">
-          <button id="closeMapButton" class="text-red-500 hover:text-red-700">Close</button>
-          <div class="mt-4">
-            <!-- OpenStreetMap Embed -->
-            <iframe 
-              width="100%" 
-              height="100%" 
-              frameborder="0" 
-              style="border:0" 
-              src="https://www.openstreetmap.org/?#map=19/11.120623/124.833087&layers=N" 
-              allowfullscreen>
-            </iframe>
-          </div>
+        <div class="bg-white p-4 rounded-lg w-11/12 md:w-3/4 h-3/4">
+          <button id="closeMapButton" class="text-red-500">Close</button>
+          <div id="map" class="h-full w-full mt-2 rounded-lg"></div>
         </div>
       </div>
 
+      <!-- Include Leaflet.js -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+      <!-- Map script -->
+      <script>
+      document.getElementById('openMapButton').addEventListener('click', function() {
+        document.getElementById('mapModal').classList.remove('hidden');
+        
+        var map = L.map('map').setView([11.1200685, 124.8289067], 16); // your coordinates
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        L.marker([11.115, 124.8957]).addTo(map)
+          .bindPopup('Brgy. Tingib, Pastrana, Leyte')
+          .openPopup();
+      });
+
+      document.getElementById('closeMapButton').addEventListener('click', function() {
+        document.getElementById('mapModal').classList.add('hidden');
+      });
+      </script>
+
     </div>
   </div>
-  <script>
-    // Get elements
-    const openMapButton = document.getElementById('openMapButton');
-    const closeMapButton = document.getElementById('closeMapButton');
-    const mapModal = document.getElementById('mapModal');
-  
-    // Open the modal when the button is clicked
-    openMapButton.addEventListener('click', function() {
-      mapModal.classList.remove('hidden');
-    });
-  
-    // Close the modal when the close button is clicked
-    closeMapButton.addEventListener('click', function() {
-      mapModal.classList.add('hidden');
-    });
-  </script>
   
 </section>
 
