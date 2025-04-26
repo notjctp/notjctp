@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Connect | No Other Than Jesus Christ Tingib Church{% endblock %}
+
+{% block content %}
+<section class="bg-white py-20 px-6">
+  <div class="max-w-4xl mx-auto text-center mb-16" data-aos="fade-down">
+    <h1 class="text-4xl font-bold text-blue-800 mb-4">Connect With Us</h1>
+    <p class="text-gray-600 text-lg">There’s a place for everyone in the body of Christ.</p>
+  </div>
+
+  <!-- Get Involved -->
+  <div class="mb-12" data-aos="fade-up">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-2">Get Involved</h2>
+    <p class="text-gray-700 mb-4">
+      Discover how you can get involved in our church community through volunteering, joining a small group, or participating in our ministries.
+    </p>
+    <a href="{{ url_for('visit') }}" class="bg-blue-700 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition-all">Join Us</a>
+  </div>
+
+  <!-- Prayer Requests -->
+  <div class="mb-12" data-aos="fade-up">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-4">Prayer Requests</h2>
+    <p class="text-gray-700 mb-6">
+      We believe in the power of prayer. Submit your prayer requests here, and our team will lift them up to the Lord.
+    </p>
+    <form action="{{ url_for('submit_prayer') }}" method="POST" class="space-y-4 max-w-lg">
+      <input type="text" name="name" placeholder="Your Name" class="w-full border rounded px-4 py-2" required>
+      <input type="email" name="email" placeholder="Your Email (optional)" class="w-full border rounded px-4 py-2">
+      <textarea name="prayer" rows="4" placeholder="Your Prayer Request" class="w-full border rounded px-4 py-2" required></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-all">Submit Prayer</button>
+    </form>
+  </div>
+
+  <!-- Contact Us -->
+  <div class="mb-12" data-aos="fade-up">
+    <h2 class="text-2xl font-semibold text-blue-700 mb-4">Contact Us</h2>
+    <p class="text-gray-700 mb-4">
+      <strong>Phone:</strong>+63-955-4857-102<br>
+      <strong>Email:</strong> <a href="mailto:[Church Email Address]" class="text-blue-600 underline">notjcsince2004@gmail.com</a>
+    </p>
+    <div class="flex gap-4 justify-center text-2xl">
+      <a href="https://facebook.com/yourchurch" target="_blank" class="text-blue-700" title="Facebook">
+        <i class="lucide lucide-facebook"></i>
+      </a>
+      <a href="https://instagram.com/yourchurch" target="_blank" class="text-pink-600" title="Instagram">
+        <i class="lucide lucide-instagram"></i>
+      </a>
+      <a href="https://youtube.com/yourchurch" target="_blank" class="text-red-600" title="YouTube">
+        <i class="lucide lucide-youtube"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Social Media Icons using Font Awesome -->
+<div class="flex gap-6 justify-center text-2xl">
+  <a href="https://www.facebook.com/NOTJCReg8" target="_blank" class="text-blue-600 hover:text-blue-800" title="Facebook">
+    <i class="fab fa-facebook-square"></i>
+  </a>
+ <!-- <a href="https://instagram.com/yourchurch" target="_blank" class="text-pink-500 hover:text-pink-700" title="Instagram">
+   <i class="fab fa-instagram"></i>
+  </a> -->
+  <a href="https://www.youtube.com/c/JohnreyOma%C3%B1a" target="_blank" class="text-red-600 hover:text-red-800" title="YouTube">
+    <i class="fab fa-youtube"></i>
+  </a>
+</div>
+</section>
+{% endblock %}

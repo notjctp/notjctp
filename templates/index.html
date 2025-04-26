@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Home | No Other Than Jesus Christ Tingib Church{% endblock %}
+
+{% block content %}
+<!-- Pop-Up Modal -->
+<div id="event-modal-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+  <div id="event-modal" class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] relative animate-fade-in mx-auto my-10 sm:my-6">
+
+    <!-- Sticky Top Bar with Close Button -->
+    <div class="sticky top-0 z-10 bg-white rounded-t-xl flex justify-end p-2 shadow-sm">
+      <button id="close-modal" class="text-gray-500 hover:text-red-500 text-2xl sm:text-xl" aria-label="Close modal">
+        <!-- Lucide X -->
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Scrollable Modal Content -->
+    <div id="event-modal-content" class="overflow-y-auto max-h-[70vh] p-4 sm:p-3 cursor-pointer">
+      <p class="text-center text-gray-500">Loading event details...</p>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Always load modal content on home page
+    fetch('/events')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const eventSection = doc.querySelector('#event-section');
+
+        const modalContent = document.getElementById('event-modal-content');
+        if (eventSection) {
+          modalContent.innerHTML = eventSection.innerHTML;
+
+          // Make entire content clickable to /events
+          document.getElementById('event-modal').addEventListener('click', () => {
+            window.location.href = '/events';
+          });
+        } else {
+          modalContent.innerHTML = "<p class='text-center'>Unable to load event details.</p>";
+        }
+
+        document.getElementById('event-modal-overlay').classList.remove('hidden');
+      });
+
+    // Close on "X" button
+    document.getElementById('close-modal').addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent triggering modal redirect
+      document.getElementById('event-modal-overlay').classList.add('hidden');
+    });
+
+    // Close if clicking outside the modal box
+    document.getElementById('event-modal-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'event-modal-overlay') {
+        document.getElementById('event-modal-overlay').classList.add('hidden');
+      }
+    });
+  });
+</script>
+
+
+
+
+<!-- Welcome Section with Background -->
+<section class="relative bg-cover bg-center text-white" style="background-image: url('{{ url_for('static', filename='images/welcome-bg.jpg') }}');">
+  <div class="bg-black bg-opacity-60 min-h-[70vh] flex flex-col justify-center items-center text-center px-6 py-12" data-aos="fade-up">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Welcome to No Other Than Jesus Christ Church</h1>
+    <p class="max-w-3xl text-lg md:text-xl mb-6">
+      A Place Where God’s Love Transforms Lives! We are a Oneness Pentecostal Apostolic church committed to sharing the message of salvation through Jesus Christ...
+    </p>
+    <div class="space-x-4">
+      <a href="/visit" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded text-white font-semibold">Plan Your Visit</a>
+      <a href="#" class="bg-white hover:bg-gray-100 text-blue-700 px-6 py-2 rounded font-semibold">Watch Live</a>
+      <a href="/connect" class="bg-gray-700 hover:bg-gray-800 px-6 py-2 rounded text-white font-semibold">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Service Times & Location -->
+<section class="py-16 px-6 max-w-5xl mx-auto">
+  <div class="grid md:grid-cols-2 gap-12">
+    <div data-aos="fade-right">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Service Time Canada</h2>
+      <ul class="list-disc list-inside text-lg mb-8 text-gray-800">
+        <li>Sunday Worship Service: 09:00 AM</li>
+        <li>Wednesday Bible Study: 7:00 PM</li>
+        <li>Friday Prayer Meeting: 7:00 PM</li>
+      </ul>
+    </div>
+    <div data-aos="fade-left">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Service Time Philippines</h2>
+      <ul class="list-disc list-inside text-lg mb-8 text-gray-800">
+        <li>Sunday Worship Service: 09:00 AM</li>
+        <li>Wednesday Bible Study: 7:00 PM</li>
+        <li>Friday Prayer Meeting: 7:00 PM</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}About Us | No Other Than Jesus Christ Tingib Church{% endblock %}
+
+{% block content %}
+<section class="bg-gray-100 py-16 px-6">
+  <div class="max-w-5xl mx-auto text-center mb-12" data-aos="fade-down">
+    <h1 class="text-4xl font-bold text-blue-800 mb-4">About Us</h1>
+    <p class="text-lg text-gray-700">Get to know our heart, purpose, and what we stand for in Christ.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+    <!-- Mission -->
+    <div class="bg-white rounded-2xl shadow-lg p-8" data-aos="fade-right">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Our Mission</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Our mission is to preach the Gospel of Jesus Christ, disciple believers, and promote unity and holiness...
+      </p>
+    </div>
+
+    <!-- Vision -->
+    <div class="bg-white rounded-2xl shadow-lg p-8" data-aos="fade-left">
+      <h2 class="text-2xl font-bold text-blue-700 mb-4">Our Vision</h2>
+      <p class="text-gray-700 leading-relaxed">
+        Our vision is to build a Spirit-filled community that impacts the world with the love of Christ...
+      </p>
+    </div>
+  </div>
+
+  <!-- Core Values -->
+  <div class="mt-16 max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-8" data-aos="zoom-in-up">
+    <h2 class="text-2xl font-bold text-blue-700 mb-6 text-center">Core Values</h2>
+    <ul class="space-y-4 text-gray-700 text-lg list-inside list-disc">
+      <li><strong>Nurturing Faith:</strong> We prioritize deepening our relationship with Jesus Christ.</li>
+      <li><strong>Obedience to God’s Word:</strong> We live by the principles of Scripture.</li>
+      <li><strong>Truth in Doctrine:</strong> We uphold Apostolic teachings.</li>
+      <li><strong>Joy in Worship:</strong> We express our love for God with enthusiasm.</li>
+      <li><strong>Community and Compassion:</strong> We support and care for each other.</li>
+    </ul>
+  </div>
+
+  <!-- What We Believe -->
+  <div class="mt-16 max-w-5xl mx-auto bg-blue-50 rounded-2xl shadow-lg p-8 text-center" data-aos="fade-up">
+    <h2 class="text-2xl font-bold text-blue-700 mb-4">What We Believe</h2>
+    <p class="text-gray-700 text-lg max-w-3xl mx-auto mb-4">
+      Learn more about our foundational beliefs, including the oneness of God, the necessity of baptism in Jesus' name...
+    </p>
+    <a href="/beliefs" class="inline-block mt-4 bg-blue-700 text-white px-6 py-2 rounded hover:bg-blue-800 font-semibold">Explore Our Beliefs</a>
+  </div>
+</section>
+{% endblock %}

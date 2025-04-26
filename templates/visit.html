@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block title %}Churches | No Other Than Jesus Christ Tingib Church{% endblock %}
+{% block content %}
+<div class="max-w-xl mx-auto mt-10 text-center">
+        <h1 class="text-3xl font-bold mb-2">Find a <span class="text-indigo-600">Church</span></h1>
+        <p class="mb-6 text-gray-600">Locate a church by using the search box given below.</p>
+
+        <div class="flex justify-center space-x-4 mb-4">
+            <label class="inline-flex items-center">
+                <input type="radio" class="form-radio text-indigo-600" name="search_type" checked>
+                <span class="ml-2">Church</span>
+            </label>
+            <label class="inline-flex items-center">
+                <input type="radio" class="form-radio text-indigo-600" name="search_type">
+                <span class="ml-2">Pastor</span>
+            </label>
+            <label class="inline-flex items-center">
+                <input type="radio" class="form-radio text-indigo-600" name="search_type">
+                <span class="ml-2">Province</span>
+            </label>
+        </div>
+
+        <div class="flex justify-center mb-6">
+            <input type="text" placeholder="Search Church Name or Address (ex. street)"
+                   class="w-full max-w-md p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <button class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-r-md">
+                🔍
+            </button>
+        </div>
+
+        <!-- Google Map (replace with dynamic result if needed) -->
+        <div class="mt-6">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1930.8418120093607!2d121.01722761834087!3d14.554788200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c9035c75f4f5%3A0x19b1877bb733d7cd!2sUnited%20Pentecostal%20Church%20Philippines!5e0!3m2!1sen!2sph!4v1614589058051!5m2!1sen!2sph"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+</div>
+{% endblock %}

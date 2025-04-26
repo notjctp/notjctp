@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}No Other Than Jesus Christ Tingib Church{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+       <style>
+          .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+          }
+
+          @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+          }
+        </style>
+
+
+</head>
+<body class="bg-white text-gray-900 font-sans">
+ <nav id="navbar" class="bg-blue-700/80 backdrop-blur-md text-white p-4 sticky top-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="/">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Church Logo" class="h-10">
+    </a>
+
+    <!-- Desktop Menu -->
+    <ul class="hidden md:flex space-x-4 text-sm">
+      <li><a href="/" id="home-link" class="hover:underline">Home</a></li>
+      <li><a href="/about" class="hover:underline">About Us</a></li>
+      <li><a href="/ministries" class="hover:underline">Ministries</a></li>
+      <li><a href="/sermons" class="hover:underline">Sermons</a></li>
+      <li><a href="/events" class="hover:underline">Events</a></li>
+      <li><a href="/connect" class="hover:underline">Connect</a></li>
+      <li><a href="/visit" class="hover:underline">Churches</a></li>
+    </ul>
+
+    <!-- Hamburger Button -->
+    <button class="md:hidden" id="menu-toggle">
+      <i class="fas fa-bars text-xl"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 mt-4 space-y-2 text-sm">
+    <a href="/" class="block hover:underline">Home</a>
+    <a href="/about" class="block hover:underline">About Us</a>
+    <a href="/ministries" class="block hover:underline">Ministries</a>
+    <a href="/sermons" class="block hover:underline">Sermons</a>
+    <a href="/events" class="block hover:underline">Events</a>
+    <a href="/connect" class="block hover:underline">Connect</a>
+    <a href="/visit" class="block hover:underline">Churches</a>
+  </div>
+</nav>
+
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 max-w-lg w-full">
+      {% for category, message in messages %}
+        <div class="bg-green-100 text-green-800 px-4 py-3 rounded shadow mb-4 text-center border border-green-300">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+  <main class="min-h-screen">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="bg-blue-700 text-white text-center py-4 mt-8">
+    &copy; 2025 No Other Than Jesus Christ Church | All rights reserved.
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script>
+          AOS.init();
+        </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+          lucide.createIcons();
+        </script>
+
+    <script>
+      // Toggle mobile menu
+      document.getElementById('menu-toggle').addEventListener('click', () => {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+      });
+
+      // Shrink navbar on scroll
+      window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 20) {
+          navbar.classList.add('py-2');
+          navbar.classList.remove('p-4');
+        } else {
+          navbar.classList.remove('py-2');
+          navbar.classList.add('p-4');
+        }
+      });
+    </script>
+
+</body>
+</html>
