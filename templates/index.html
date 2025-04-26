@@ -68,7 +68,8 @@
 <!-- Welcome Section with Background -->
 <section class="relative bg-cover bg-center text-white" style="background-image: url('{{ url_for('static', filename='images/welcome-bg.png') }}');">
   <div class="bg-black bg-opacity-60 min-h-[70vh] flex flex-col justify-center items-center text-center px-6 py-12" data-aos="fade-up">
-    <h1 class="text-4xl md:text-5xl font-bold mb-6">Welcome to No Other Than Jesus Christ Church</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Welcome to No Other Than Jesus Christ</h1>
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">Tingib Church</h1>
     <p class="max-w-3xl text-lg md:text-xl mb-6">
       A Place Where God’s Love Transforms Lives! We are a Oneness Pentecostal Apostolic church committed to sharing the message of salvation through Jesus Christ...
     </p>
@@ -98,38 +99,37 @@
          <!-- Button to trigger map -->
         <button id="openMapButton" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Show Location</button>
       </ul>
-      <!-- Modal -->
-      <div id="mapModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
-        <div class="bg-white p-4 rounded-lg w-11/12 md:w-3/4 h-3/4">
-          <button id="closeMapButton" class="text-red-500">Close</button>
-          <div id="map" class="h-full w-full mt-2 rounded-lg"></div>
-        </div>
-      </div>
-
-      <!-- Include Leaflet.js -->
-      <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-      <!-- Map script -->
-      <script>
-      document.getElementById('openMapButton').addEventListener('click', function() {
-        document.getElementById('mapModal').classList.remove('hidden');
-        
-        var map = L.map('map').setView([11.1200685, 124.8289067], 16); // your coordinates
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; OpenStreetMap contributors'
-        }).addTo(map);
-        L.marker([11.115, 124.8957]).addTo(map)
-          .bindPopup('Brgy. Tingib, Pastrana, Leyte')
-          .openPopup();
-      });
-
-      document.getElementById('closeMapButton').addEventListener('click', function() {
-        document.getElementById('mapModal').classList.add('hidden');
-      });
-      </script>
-
     </div>
+     <!-- Modal -->
+     <div id="mapModal" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center hidden">
+      <div class="bg-white p-4 rounded-lg w-11/12 md:w-3/4 h-3/4">
+        <button id="closeMapButton" class="text-red-500">Close</button>
+        <div id="map" class="h-full w-full mt-2 rounded-lg"></div>
+      </div>
+    </div>
+
+    <!-- Include Leaflet.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Map script -->
+    <script>
+    document.getElementById('openMapButton').addEventListener('click', function() {
+      document.getElementById('mapModal').classList.remove('hidden');
+      
+      var map = L.map('map').setView([11.1200685, 124.8289067], 16); // your coordinates
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+      L.marker([11.115, 124.8957]).addTo(map)
+        .bindPopup('Brgy. Tingib, Pastrana, Leyte')
+        .openPopup();
+    });
+
+    document.getElementById('closeMapButton').addEventListener('click', function() {
+      document.getElementById('mapModal').classList.add('hidden');
+    });
+    </script>
   </div>
   
 </section>
